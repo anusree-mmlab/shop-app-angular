@@ -1,0 +1,27 @@
+
+
+<label>Server:</label>
+<!-- <input type="text" 
+class="form-control" 
+(input) = "onInputServer($event)"/>
+<p>{{serverName}}</p> -->
+
+<input type="text" 
+class="form-control" 
+[(ngModel)]="serverName"/>
+<p>{{serverName}}</p>
+
+<button class="btn btn-primary" value="Add Server" (click) ="onServerCreate()">Add server</button>
+
+<p *ngIf="serverCreated; else noServer;" [innerHtml]="serverStatusMessage | safeHtml"></p>
+
+<ng-template #noServer>
+    <p [innerHtml]="serverStatusMessage | safeHtml"></p>
+</ng-template>
+
+<app-server></app-server>
+<app-server></app-server>
+
+<!-- <div class="app-server">
+  <div>TEST</div>
+</div> -->

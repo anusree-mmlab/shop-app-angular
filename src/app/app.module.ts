@@ -6,12 +6,16 @@ import {SafeHtmlPipe} from './pipes/dom-sanitize.pipe';
 
 
 import { AppComponent } from './app.component';
+import { ServerComponent } from './components/server/server.component';
+import { ServersComponent } from './components/servers/servers.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ServerComponent,
+    ServersComponent
   ],
   imports: [
     BrowserModule,
