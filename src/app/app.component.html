@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <input type="text" [(ngModel)]="title"  name="t_title"/>
+  <input type="button"  value="Click" (click) ="swapTDisplay(tmvar)"/>
+  <h1>
+    Welcome {{ title }}!
+  </h1>
+
+  <div #tmvar>
+    Template variable
+    <div [innerHTML]="testHtml | safeHtml"></div>
+  </div>
+  </div>
+
+
+
+
