@@ -19,8 +19,14 @@ class="form-control"
     <p [innerHtml]="serverStatusMessage | safeHtml"></p>
 </ng-template>
 
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor="let server of servers; "></app-server>
+
+<hr/>
+
+<p *ngFor="let item of testArr;let i = index;" [ngStyle]="{backgroundColor: i%2 ===0 ? 'orange': 'silver'}">
+  {{item}} - {{i}}
+</p>
+
 
 <!-- <div class="app-server">
   <div>TEST</div>
