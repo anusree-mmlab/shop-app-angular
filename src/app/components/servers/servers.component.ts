@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-servers',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
+  @Output('onServerCreatedName') serverCreatedName = new EventEmitter<any>();
   serverStatusMessage : String = '<div style="color:grey">No Server Created</div>';
   serverName = '';
   serverCreated = false;
@@ -19,6 +21,8 @@ export class ServersComponent implements OnInit {
   }
 
   onServerCreate() {
+    this.serverCreatedName.emit(this.serverName);
+
     this.serverCreated = true;
     this.servers.push(this.serverName);
     this.serverStatusMessage = '<div>Server <span style="color:green">' + this.serverName + '</span>  has been created!</div>';
