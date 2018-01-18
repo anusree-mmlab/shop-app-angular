@@ -11,6 +11,7 @@ export class ServersComponent implements OnInit {
   serverCreated = false;
   servers:any = ['Server 1','Server 2', 'Server 3'];
   testArr:any = [1,2,3,4,5];
+  userName:string = 'Roger';
 
   constructor() { }
 

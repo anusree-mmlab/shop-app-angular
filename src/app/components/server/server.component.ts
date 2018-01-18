@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector : "app-server",
@@ -9,9 +9,10 @@ import { Component } from '@angular/core';
         color : white;
     }`]
 })
-export class ServerComponent {
-    serverName : String = 'My server';
-    status: String = 'Offline';
+export class ServerComponent implements OnInit {
+    @Input() user:string;
+    serverName : string = 'My server';
+    status: string = 'Offline';
 
 
     constructor() {
@@ -20,5 +21,9 @@ export class ServerComponent {
 
     getColor() {
         return this.status === 'Online' ? 'green' : 'red';
+    }
+
+    ngOnInit()  {
+        console.log('User from parent component', this.user);
     }
 }
