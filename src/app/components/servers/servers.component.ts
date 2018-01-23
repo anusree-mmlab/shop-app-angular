@@ -1,10 +1,11 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { LoggingService } from '../../services/logging.service';
 
 
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.css']
+  styleUrls: ['./servers.component.css'],
 })
 export class ServersComponent implements OnInit {
   @Output('onServerCreatedName') serverCreatedName = new EventEmitter<any>();
@@ -14,10 +15,16 @@ export class ServersComponent implements OnInit {
   servers:any = ['Server 1','Server 2', 'Server 3'];
   testArr:any = [1,2,3,4,5];
   userName:string = 'Roger';
+  @ViewChild('inputServerName') inputServerName: ElementRef;
 
-  constructor() { }
+  constructor(private loggingService: LoggingService) { }
 
   ngOnInit() {
+    const country = this.loggingService.getCountry();
+
+    console.log('ServersComponent', 'ngOnInit', country);
+
+    this.loggingService.setCountry('India');
   }
 
   onServerCreate() {
@@ -28,7 +35,8 @@ export class ServersComponent implements OnInit {
     this.serverStatusMessage = '<div>Server <span style="color:green">' + this.serverName + '</span>  has been created!</div>';
   }
 
-  onInputServer(event) {
-    this.serverName = event.target.value;
+  onInputServer(value) {
+    //this.serverName = value;
+    this.serverName = this.inputServerName.nativeElement.value;
   }
 }

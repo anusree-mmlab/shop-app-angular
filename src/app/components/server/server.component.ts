@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoggingService } from '../../services/logging.service';
 
 @Component({
     selector : "app-server",
@@ -15,7 +16,7 @@ export class ServerComponent implements OnInit {
     status: string = 'Offline';
 
 
-    constructor() {
+    constructor(private loggingService: LoggingService) {
         this.status = Math.random() > .5 ? 'Online' : 'Offline';
     }
 
@@ -24,6 +25,9 @@ export class ServerComponent implements OnInit {
     }
 
     ngOnInit()  {
-        console.log('User from parent component', this.user);
+        this.loggingService.logToConsole('ServerComponent', 'ngOnInit',  this.user );
+
+        const country = this.loggingService.getCountry();
+        console.log('ServerComponent', 'ngOnInit', country);
     }
 }

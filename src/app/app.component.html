@@ -1,13 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-        <h1>Hello World, {{serverHead}}</h1>
+        <h1 class="test-bind" test-directive >Hello World, {{serverHead}}</h1>
         <hr/>
-        <app-servers (onServerCreatedName)="addNameToHeader($event)"></app-servers>
+      <!--   <app-servers (onServerCreatedName)="addNameToHeader($event)"></app-servers> -->
+
+      <router-outlet></router-outlet>
+      <a routerLink = "/" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}">home</a>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+      
+    <div class="col-xs-6" >
+      {{serverMessage.msg}} == {{serverMessage.from}}
+    </div>
+    <div class="col-xs-6">
+        <input type="text" [(ngModel)]="socketUsername" placeholder="User name"/>
+        <input type="button" class="btn" style="background-color:green;" value="LOGIN" (click)="login()"/>
     </div>
   </div>
  
-</div>
+
 
 
 

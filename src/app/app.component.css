@@ -6,3 +6,10 @@
 h1 {
     color : blueviolet;
 }
+.test-bind {
+    border: solid aqua 1px;
+}
+
+.activeLink {
+    background-color: red;
+}
