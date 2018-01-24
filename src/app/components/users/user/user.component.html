@@ -1,0 +1,18 @@
+<div *ngIf="selectedUser !== null">
+    {{selectedUser.name}} -  {{selectedUser.age}}
+</div>
+
+<div style="width:auto;height:auto;margin:10px;padding:10px;border:solid 1px orange">
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <label>Name:</label>
+    <input class="form-controls" type="text" name="name" ngModel required/>
+
+    <br/>
+    <label>Age:</label>
+    <input class="form-controls" type="text" name="age" ngModel/>
+
+    <br/>
+    <input type="submit" class="btn btn-primary" value="submit"/>
+  </form>
+</div>  

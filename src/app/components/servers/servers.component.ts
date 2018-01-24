@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
+
 import { LoggingService } from '../../services/logging.service';
 
 
@@ -17,7 +19,7 @@ export class ServersComponent implements OnInit {
   userName:string = 'Roger';
   @ViewChild('inputServerName') inputServerName: ElementRef;
 
-  constructor(private loggingService: LoggingService) { }
+  constructor(private loggingService: LoggingService, private router: Router) { }
 
   ngOnInit() {
     const country = this.loggingService.getCountry();
@@ -25,6 +27,12 @@ export class ServersComponent implements OnInit {
     console.log('ServersComponent', 'ngOnInit', country);
 
     this.loggingService.setCountry('India');
+
+    const extraParams: NavigationExtras = {queryParams : {page :1}};
+
+    setTimeout(() => {
+      //this.router.navigate(['/users',2], extraParams);
+    }, 1000);
   }
 
   onServerCreate() {
