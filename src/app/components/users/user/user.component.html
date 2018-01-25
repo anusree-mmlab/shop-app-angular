@@ -1,18 +1,55 @@
 <div *ngIf="selectedUser !== null">
-    {{selectedUser.name}} -  {{selectedUser.age}}
+  {{selectedUser.name}} - {{selectedUser.age}}
 </div>
 
 <div style="width:auto;height:auto;margin:10px;padding:10px;border:solid 1px orange">
-
+<h3>User Form</h3>
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <label>Name:</label>
-    <input class="form-controls" type="text" name="name" ngModel required/>
+    <div id="ugroup1" ngModelGroup="userGroup1">
+      <label>*Name:</label>
+      <input class="form-controls" type="text" name="name" [ngModel]="''" required #name="ngModel" />
+      <span class="help-block" *ngIf="!name.valid && name.touched">*Required Field </span>
+      <br/>
 
-    <br/>
-    <label>Age:</label>
-    <input class="form-controls" type="text" name="age" ngModel/>
+      <label>*Email:</label>
+      <input class="form-controls" type="text" name="email" ngModel required  email #email="ngModel" />
+      <span class="help-block" *ngIf="!email.valid && email.touched">*Please enter a valid email </span>
+      <br/>
+    </div>
 
+    <label>*Age:</label>
+    <input class="form-controls" type="text" name="age" ngModel required #age="ngModel" />
+    <span class="help-block" *ngIf="!age.valid && age.touched">*Required Field </span>
     <br/>
-    <input type="submit" class="btn btn-primary" value="submit"/>
+    <!-- <input type="submit" class="btn btn-primary" value="submit" [disabled]="!name.valid || !age.valid"/> -->
+    <input type="submit" class="btn btn-primary" value="submit">
   </form>
-</div>  
+</div>
+
+<hr/>
+<div style="width:auto;height:auto;margin:10px;padding:10px;border:solid 1px orange">
+  <h3>Product Form</h3>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmitProduct()">
+      <label>*Product Name:</label>
+      <input class="form-controls" type="text" name="product_name"  formControlName="product_name"/>
+      <span *ngIf="!productForm.get('product_name').valid && productForm.get('product_name').touched">Required Field</span>
+      <br/>
+
+      <label>*Product Price:</label>
+      <input class="form-controls" type="text" name="product_price" formControlName="product_price" />
+      <span *ngIf="!productForm.get('product_price').valid && productForm.get('product_price').touched">Price value > 10 is Required</span>
+     
+      <br/>
+
+      <label>*Product Availability:</label>
+      <div class="radio" *ngFor="let is_available of avalableList">
+        <label>
+          <input type="radio" name="product_is_available" [value]="is_available" formControlName="product_is_available"/>{{is_available}}
+        </label>
+      </div>
+     
+      <br/>
+
+      <input type="submit" class="btn btn-primary" value="submit">
+  </form>
+</div>

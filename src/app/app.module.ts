@@ -32,7 +32,8 @@ import {UsersService} from './components/users/user.service';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutesModule
+    AppRoutesModule,
+    ReactiveFormsModule,
   ],
   providers: [LoggingService, UsersService],
   bootstrap: [AppComponent]
