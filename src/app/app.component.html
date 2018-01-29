@@ -1,12 +1,26 @@
+
 <div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" style="cursor: pointer">Hello World, {{serverHead}}</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/"  style="cursor: pointer">Home</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a  routerLink="/servers" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}" style="cursor: pointer">Servers</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/users" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}" style="cursor: pointer">Users</a></li>
+          </ul>
+        </div>
+      </nav>
+
   <div class="row">
     <div class="col-xs-12">
-        <h1 class="test-bind" test-directive >Hello World, {{serverHead}}</h1>
-        <hr/>
+       
       <!--   <app-servers (onServerCreatedName)="addNameToHeader($event)"></app-servers> -->
 
       <router-outlet></router-outlet>
-      <a routerLink = "/" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}">home</a>
+      
     </div>
   </div>
 </div>

@@ -32,12 +32,29 @@
   <form [formGroup]="productForm" (ngSubmit)="onSubmitProduct()">
       <label>*Product Name:</label>
       <input class="form-controls" type="text" name="product_name"  formControlName="product_name"/>
-      <span *ngIf="!productForm.get('product_name').valid && productForm.get('product_name').touched">Required Field</span>
+      <span *ngIf="!productForm.get('product_name').valid && 
+      productForm.get('product_name').touched &&
+      productForm.get('product_name').errors.excludedProductNameError">The product name can not have this value</span>
+      <span *ngIf="!productForm.get('product_name').valid && 
+        productForm.get('product_name').touched && 
+        productForm.get('product_name').errors.required">Required Field</span>
       <br/>
 
       <label>*Product Price:</label>
       <input class="form-controls" type="text" name="product_price" formControlName="product_price" />
-      <span *ngIf="!productForm.get('product_price').valid && productForm.get('product_price').touched">Price value > 10 is Required</span>
+      <span *ngIf="!productForm.get('product_price').valid &&
+       productForm.get('product_price').touched && 
+       productForm.get('product_price').errors.required">Required Field</span>
+
+       <span *ngIf="!productForm.get('product_price').valid &&
+       productForm.get('product_price').touched && 
+       productForm.get('product_price').errors.min">Price value > 10 is Required</span>
+
+       <span *ngIf="!productForm.get('product_price').valid &&
+       productForm.get('product_price').touched && 
+       !productForm.get('product_price').errors.min && 
+       !productForm.get('product_price').errors.required &&
+       productForm.get('product_price').errors.priceError">Price value need to be > 1000 for mobile</span>
      
       <br/>
 

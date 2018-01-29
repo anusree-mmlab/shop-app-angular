@@ -12,6 +12,7 @@ import {SafeHtmlPipe} from './pipes/dom-sanitize.pipe';
 import { UserListComponent } from './components/users/userlist.component';
 import { UserComponent } from './components/users/user/user.component';
 import { NotFoundComponent } from './notfound.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { AppRoutesModule } from './routing.module';
 import {UsersService} from './components/users/user.service';
@@ -27,6 +28,7 @@ import {UsersService} from './components/users/user.service';
     UserListComponent,
     UserComponent,
     NotFoundComponent,
+    HomeComponent,
     
   ],
   imports: [

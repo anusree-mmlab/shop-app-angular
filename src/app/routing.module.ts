@@ -8,9 +8,11 @@ import { ServersComponent } from './components/servers/servers.component';
 import { UserListComponent } from './components/users/userlist.component';
 import { UserComponent } from './components/users/user/user.component';
 import { NotFoundComponent } from './notfound.component';
+import { HomeComponent } from './components/home/home.component';
 
 const appRoutes: Routes = [
-    {path:"", redirectTo:"/servers", pathMatch:"full"},
+    //{path:"", redirectTo:"/servers", pathMatch:"full"},
+    {path: "", component:HomeComponent},
     {path:"servers", component:ServersComponent},
     {path:"users", component:UserListComponent,children: [
       {path: ':id', component : UserComponent, data : {test:'abc'}}

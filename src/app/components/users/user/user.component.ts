@@ -30,8 +30,8 @@ export class UserComponent implements OnInit {
     //console.log(this.formObject);
 
     this.productForm = new FormGroup({
-      'product_name' : new FormControl(null, Validators.required),
-      'product_price' : new FormControl(null, [Validators.required, Validators.min(10)]),
+      'product_name' : new FormControl(null, [Validators.required, this.excludeProductNameValidator.bind(this)]),
+      'product_price' : new FormControl(null, [Validators.required, Validators.min(10), this.checkPriceValidator.bind(this)]),
       'product_is_available' : new FormControl('yes'),
       
     });
@@ -39,6 +39,26 @@ export class UserComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log("Submitted",form);
+  }
+
+  excludeProductNameValidator(control: FormControl):{[s:string] : boolean} {
+    if (control.value === 'test') { 
+      return {'excludedProductNameError' : true};
+    } else {
+      return null;
+    }
+  }
+
+  checkPriceValidator(control: FormControl):{[s:string] : boolean} {
+    if (this.productForm !== undefined) {
+      if ((this.productForm.value.product_name === 'mobile') && (+control.value < 1000)) {
+        return {'priceError' : true};
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
   }
 
   onSubmitProduct() {
