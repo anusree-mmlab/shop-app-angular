@@ -10,10 +10,14 @@ import { UserComponent } from './components/users/user/user.component';
 import { NotFoundComponent } from './notfound.component';
 import { HomeComponent } from './components/home/home.component';
 
+//import { ServersModule } from './components/servers/servers.module';
+
+
 const appRoutes: Routes = [
     //{path:"", redirectTo:"/servers", pathMatch:"full"},
     {path: "", component:HomeComponent},
-    {path:"servers", component:ServersComponent},
+   // {path:"servers", component:ServersComponent},
+   {path:"servers", loadChildren: './components/servers/servers.module#ServersModule'},
     {path:"users", component:UserListComponent,children: [
       {path: ':id', component : UserComponent, data : {test:'abc'}}
     ]},

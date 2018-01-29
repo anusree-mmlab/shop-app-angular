@@ -12,6 +12,7 @@ import { LoggingService } from '../../services/logging.service';
 export class ServersComponent implements OnInit {
   @Output('onServerCreatedName') serverCreatedName = new EventEmitter<any>();
   serverStatusMessage : String = '<div style="color:grey">No Server Created</div>';
+  //serverStatusMessage : String = 'No Server Created';
   serverName = '';
   serverCreated = false;
   servers:any = ['Server 1','Server 2', 'Server 3'];
@@ -41,6 +42,7 @@ export class ServersComponent implements OnInit {
     this.serverCreated = true;
     this.servers.push(this.serverName);
     this.serverStatusMessage = '<div>Server <span style="color:green">' + this.serverName + '</span>  has been created!</div>';
+    //this.serverStatusMessage = this.serverName+'  has been created!';
   }
 
   onInputServer(value) {

@@ -4,7 +4,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" style="cursor: pointer">Hello World, {{serverHead}}</a>
+            <a class="navbar-brand" style="cursor: pointer" test-directive>Hello World, {{serverHead}}</a>
           </div>
           <ul class="nav navbar-nav">
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/"  style="cursor: pointer">Home</a></li>
@@ -33,9 +33,10 @@
     <div class="col-xs-6">
         <input type="text" [(ngModel)]="socketUsername" placeholder="User name"/>
         <input type="button" class="btn" style="background-color:green;" value="LOGIN" (click)="login()"/>
-    </div>
+    </div>        
   </div>
  
+  <div [innerHTML]="testHtml | safeHtml"></div>
 
 
 

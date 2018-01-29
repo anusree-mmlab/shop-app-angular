@@ -21,10 +21,12 @@ class="form-control"
 
 <button class="btn btn-primary" value="Add Server" (click) ="onServerCreate()">Add server</button>
 
+
 <p *ngIf="serverCreated; else noServer;" [innerHtml]="serverStatusMessage | safeHtml"></p>
 
 <ng-template #noServer>
-    <p [innerHtml]="serverStatusMessage | safeHtml"></p>
+
+   <p [innerHtml]="serverStatusMessage | safeHtml"></p>
 </ng-template>
 
 <app-server *ngFor="let server of servers; "  [user]="userName"></app-server>
