@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   testHtml = '<div style="border:solid 1px" >ABCD</div>';
   itemClickVal = false;
   socketUsername = '';
-  serverMessage = '';
+  serverMessage:any = {from:'', message:''};
   //@Output() serverMessageReceived = new EventEmitter<any>();
 
   constructor(private loggingService: LoggingService) {
