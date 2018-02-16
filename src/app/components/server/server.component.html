@@ -1,1 +1,2 @@
-<p [ngStyle]="{backgroundColor:getColor()}" [ngClass]="{serverInfo: status==='Online'}">Server created by {{user}} {{serverName}} is {{status}}</p>
+<p [ngStyle]="{backgroundColor:getColor(),color: getFontColor()}" [ngClass]="{serverInfo: status==='Online'}">
+<b style="font-size:14px">{{serverName}}</b> by {{user}} is {{status}}</p>

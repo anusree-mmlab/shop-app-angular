@@ -1,0 +1,23 @@
+<div>
+    <header class="header">
+        <h2>Questions/Answers</h2>
+    </header>
+
+    <main class="main">
+        <div class="questionContainer" *ngFor="let QA of questionAnswerArrPager; let i = index;">
+            <div class="Question">{{((currentPage-1) * itemPerPageCount) + i+1}}. {{QA.question}}</div>
+            <div class="Answer" [innerHTML]="QA.answer"></div>
+            <!-- <div class="Answer">{{QA.answer}}</div> -->
+            <div class="Type">{{QA.section}}</div>
+            
+        </div> 
+        
+
+
+        <div class="Pager">
+                <span class="Previous" (click)="preparePager(currentPage-1)"> <b><</b> </span>
+                <span class="PageItem" *ngFor="let p of pageCount" (click)="preparePager(p)" [ngStyle]="getActiveProps(p)">{{p}}</span>
+                <span class="Next"  (click)="preparePager(currentPage+1)"> <b>></b> </span>
+        </div>
+    </main>
+</div> 

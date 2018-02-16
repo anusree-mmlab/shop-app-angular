@@ -3,11 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import {UsersService} from '../user.service';
+import { LoggingService } from '../../../services/logging.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
+  providers: [LoggingService]
 })
 export class UserComponent implements OnInit {
   //@Input() userSelected:any;
@@ -15,8 +17,14 @@ export class UserComponent implements OnInit {
   selectedUser: any;
   avalableList:string[] = ['yes','no'];
   productForm: FormGroup;
+  prodFormInitialError: string = '';
 
-  constructor(private usersService: UsersService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private usersService: UsersService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private loggingService: LoggingService
+    ) { }
 
   ngOnInit() {
     this.route.params.subscribe((idObj) => {
@@ -38,7 +46,15 @@ export class UserComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+   // onSubmit(form: any) {
     console.log("Submitted",form);
+    this.loggingService.logToConsole('UserComponent', 'onSubmit',  'user form' );
+
+    if (form.valid) {
+      const newUserObj = { name: form.value.userGroup1.name, email: form.value.userGroup1.email, age: form.value.age };
+      
+      this.usersService.addUser(newUserObj);
+    }
   }
 
   excludeProductNameValidator(control: FormControl):{[s:string] : boolean} {
@@ -50,6 +66,7 @@ export class UserComponent implements OnInit {
   }
 
   checkPriceValidator(control: FormControl):{[s:string] : boolean} {
+  //  checkPriceValidator(control: FormControl):any {
     if (this.productForm !== undefined) {
       if ((this.productForm.value.product_name === 'mobile') && (+control.value < 1000)) {
         return {'priceError' : true};
@@ -62,6 +79,12 @@ export class UserComponent implements OnInit {
   }
 
   onSubmitProduct() {
-    console.log(this.productForm);
+    console.log(this.productForm.touched,this.productForm);
+    this.prodFormInitialError = '';
+
+    if( !this.productForm.valid && !this.productForm.touched) {
+      this.prodFormInitialError = 'Please enter values';
+    }
+
   }
 }

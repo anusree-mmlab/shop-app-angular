@@ -1,3 +1,11 @@
+<div style="padding:10px; width:200px; background-color:#00ff6f;text-align:center">
+    {{curDate| date: "yyyy-MM-dd hh:mm:ss"}}
+</div>
+
+<!-- <app-games></app-games> -->
+
+
+
 <label>Server:</label>
 <!-- <input type="text" 
 class="form-control" 
@@ -13,7 +21,6 @@ class="form-control"
 class="form-control" 
 #inputServerName (input) = "onInputServer(inputServerName.value)"/>
 <p>{{serverName}}</p> -->
-
 <input type="text" 
 class="form-control" 
 #inputServerName (input) = "onInputServer('bla')"/>
@@ -29,7 +36,7 @@ class="form-control"
    <p [innerHtml]="serverStatusMessage | safeHtml"></p>
 </ng-template>
 
-<app-server *ngFor="let server of servers; "  [user]="userName"></app-server>
+<app-server *ngFor="let server of servers; " [serverName]="server" [user]="userName"></app-server>
 
 <hr/>
 

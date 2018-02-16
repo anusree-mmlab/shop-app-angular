@@ -19,6 +19,7 @@ export class ServersComponent implements OnInit {
   testArr:any = [1,2,3,4,5];
   userName:string = 'Roger';
   @ViewChild('inputServerName') inputServerName: ElementRef;
+  curDate = new Date();
 
   constructor(private loggingService: LoggingService, private router: Router) { }
 
@@ -34,6 +35,14 @@ export class ServersComponent implements OnInit {
     setTimeout(() => {
       //this.router.navigate(['/users',2], extraParams);
     }, 1000);
+
+    setInterval(() => {
+      this.setCurrentTime()
+    }, 1000);
+  }
+
+  setCurrentTime() {
+    this.curDate = new Date();
   }
 
   onServerCreate() {

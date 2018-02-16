@@ -21,6 +21,7 @@ const appRoutes: Routes = [
     {path:"users", component:UserListComponent,children: [
       {path: ':id', component : UserComponent, data : {test:'abc'}}
     ]},
+    {path:'questions-answers',loadChildren: './components/questions/questions.module#QuestionsModule'},
     {path:'page-not-found', component : NotFoundComponent},
     {path:'**', redirectTo : '/page-not-found'}
   ];

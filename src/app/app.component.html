@@ -10,14 +10,16 @@
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/"  style="cursor: pointer">Home</a></li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a  routerLink="/servers" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}" style="cursor: pointer">Servers</a></li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/users" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}" style="cursor: pointer">Users</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/questions-answers" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}" style="cursor: pointer">Questions</a></li>
           </ul>
         </div>
       </nav>
 
   <div class="row">
     <div class="col-xs-12">
-       
+       <!-- <app-games></app-games> -->
       <!--   <app-servers (onServerCreatedName)="addNameToHeader($event)"></app-servers> -->
+      
 
       <router-outlet></router-outlet>
       

@@ -6,12 +6,13 @@ import { ServersComponent } from './servers.component';
 import { ServerComponent } from '../server/server.component';
 import { ServersRouting } from './servers-routing.module';
 import { SharedModule } from '../../shared.module';
+//import { GamesComponent } from '../games/games.component';
 
 @NgModule({
     declarations: [
         ServerComponent,
         ServersComponent,
-
+       // GamesComponent
     ],
     imports:[
         CommonModule,

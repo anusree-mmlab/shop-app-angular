@@ -1,0 +1,83 @@
+.header {
+    padding: 10px;
+    background-color: #f4c814;
+}
+
+.main {
+    padding: 10px;
+    background-color: #fffb98;
+}
+
+.questionContainer {
+    margin-bottom: 5px;
+    background-color:#d3e5f1;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    position: relative;
+}
+
+.Question {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.Answer {
+    color: purple;
+    margin-left: 10px;
+    margin-bottom:5px;
+}
+
+.Type {
+    width: auto;
+    margin-top:10px;
+/*     display: flex;
+    justify-content: flex-end; */
+    display:inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ff005c;
+    color: white;
+    font-size:10px;
+    position: absolute;
+
+    right: 5px;
+    bottom:5px;
+}
+
+.Pager {
+    /*margin-top: 20px;*/
+    padding: 10px;
+    text-align: center;
+    margin:0 auto;
+}
+
+.Previous,.Next {
+    display: inline-block;
+    font-size: 16px;
+    width: 20px;
+    padding: 2px;
+    border: solid 1px #5b5a39;
+    background-color:#97b2d6;
+    cursor: pointer;
+}
+
+.Previous:hover, .Next:hover {
+    background-color:#2e55af;
+}
+
+.PageItem {
+    display: inline-block;
+    font-size: 16px;
+    width: 20px;
+    padding: 2px;
+    border: solid 1px #5b5a39;
+    background-color:#f9aa7f;
+    color: black;
+    cursor: pointer;
+}
+
+.PageItem:hover{
+    background-color: #5c0949;
+    color: white;
+}

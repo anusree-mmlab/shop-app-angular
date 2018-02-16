@@ -33,11 +33,11 @@
       <label>*Product Name:</label>
       <input class="form-controls" type="text" name="product_name"  formControlName="product_name"/>
       <span *ngIf="!productForm.get('product_name').valid && 
+      productForm.get('product_name').touched && 
+      productForm.get('product_name').errors.required">Required Field</span>
+      <span *ngIf="!productForm.get('product_name').valid && 
       productForm.get('product_name').touched &&
       productForm.get('product_name').errors.excludedProductNameError">The product name can not have this value</span>
-      <span *ngIf="!productForm.get('product_name').valid && 
-        productForm.get('product_name').touched && 
-        productForm.get('product_name').errors.required">Required Field</span>
       <br/>
 
       <label>*Product Price:</label>
@@ -66,7 +66,7 @@
       </div>
      
       <br/>
-
+      <div *ngIf="prodFormInitialError" style="color:red">{{prodFormInitialError}}</div>
       <input type="submit" class="btn btn-primary" value="submit">
   </form>
 </div>
