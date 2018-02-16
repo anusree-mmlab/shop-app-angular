@@ -11,7 +11,7 @@ export class QuestionsService {
     }
 
     questions = [
-        {question:"What is Angular?", answer: "Angular is js frameworks to build reactive web apps"}
+        {section:"basic",question:"What is Angular?", answer: "Angular is js frameworks to build reactive web apps"}
     ];
 
     getQuestionsAndAnswers(): Observable<any> {

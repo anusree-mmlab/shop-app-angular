@@ -11,7 +11,7 @@ export class QuestionsComponent implements OnInit {
     public questionAnswerArr: any[];
     public questionAnswerArrPager: any[];
     public currentPage: number = 1;
-    public itemPerPageCount: number = 5;
+    public itemPerPageCount: number = 10;
     public pageCount: number[] = [];
     public questionModules:string[] = ['basic'];
 
