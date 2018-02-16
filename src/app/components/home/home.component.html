@@ -1,5 +1,5 @@
 <div>
     <h2>Welcome to Home Page.</h2>
-    <div (newGameAdded)="onNewGame($event)">New Game is: {{receivedGame}}</div>
-    <app-games [testgame]="game" ></app-games>
+    <div >New Game is [@Output example]: {{receivedGame}}</div>
+    <app-games [testgame]="game" (newGameAdded)="onNewGame($event)"><p style="font-style:italic; color: blue">ng-content usage example. Refer the home.component.html</p></app-games>
 </div>

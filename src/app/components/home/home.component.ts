@@ -16,6 +16,6 @@ export class HomeComponent {
 
     onNewGame(value) {
         console.log('New game', value);
-        this.receivedGame = value;
+        this.receivedGame = value.game;
     }
 }

@@ -48,8 +48,6 @@ export class QuestionsComponent implements OnInit {
         const splitStart = (this.currentPage - 1) * (this.itemPerPageCount);
 
         this.questionAnswerArrPager = QAPager.splice(splitStart, this.itemPerPageCount);
-
-        console.log('Pager', currentPage, this.questionAnswerArrPager);
     }
 
     getActiveProps(currentPage)

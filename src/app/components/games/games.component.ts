@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 //import {DatePipe} from '@angular/common';
 
 @Component({
@@ -17,14 +17,20 @@ import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class GamesComponent implements OnInit {
     public curDate = new Date();
     @Input() testgame:string;
-    @Output() newGameAdded = new EventEmitter<any>();
+    @Output() newGameAdded :EventEmitter<any> = new EventEmitter<any>();
+    @ViewChild('gameval') gameValInput: ElementRef;
+    public newVal:string;
 
     ngOnInit() {
         
     }
 
     addNewGame() {
-        console.log('addNewGame', this.newGameAdded);
-        this.newGameAdded.emit({game:'Cricket'});
+        this.newVal = this.gameValInput.nativeElement.value;
+        console.log('ViewChild value>>>>', this.newVal);
+
+        this.newGameAdded.emit({game:this.newVal});
     }
+
+
 }
