@@ -2,10 +2,12 @@
 
   <ul >
     <li *ngFor="let user of userList">
-     <a routerLink="/users/{{user.id}}" >{{user.name}}</a>
+     <!-- <a routerLink="/users/{{user.id}}" >{{user.name}}</a> -->
+     <a [routerLink]="['/users',user.id]" [queryParams]="{edit:'true'}" fragment="testfragment">{{user.name}}</a>
     </li>
   </ul>
 
+  <button class="btn btn-primary" value="Load User" (click)="loadUser(2)">Load User(2)</button>
   
 
 <router-outlet></router-outlet>

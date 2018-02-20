@@ -1,18 +1,33 @@
 <div>
     <header class="header">
-        <h2>Questions/Answers</h2>
+        <div style="display:inline-block;">
+            <h2>Questions/Answers</h2>
+        </div>
+        <div style="display:inline-block; float:right;">
+            <button class="btn btn-primary" (click) ="addNewQuestion()">New Question</button>
+        </div>
+        <div>
+                <button class="btn btn-primary" style="background-color:blueviolet !important; border-radius:20px" (click) ="filterBySection()">Reset Filter</button>
+        </div>    
     </header>
 
     <main class="main">
         <div class="questionContainer" *ngFor="let QA of questionAnswerArrPager; let i = index;">
             <div class="Question">{{((currentPage-1) * itemPerPageCount) + i+1}}. {{QA.question}}</div>
-            <div class="Answer" [innerHTML]="QA.answer"></div>
-            <!-- <div class="Answer">{{QA.answer}}</div> -->
-            <div class="Type">{{QA.section}}</div>
-            
+           <!--  <div class="Answer" [innerHTML]="QA.answer"></div> -->
+           <!--  <div class="Answer" [innerHTML]="QA.answer.join('<br/>')"></div> -->
+            <div class="Answer" *ngFor="let s of QA.answer">
+                {{s}} <br/>
+            </div> 
+            <div class="Type" (click)="filterBySection(QA.section)">{{QA.section}}</div>
+            <div class="Edit" 
+                *ngIf="!isFilteredRes"
+                (click)="editQuestion(QA,((currentPage-1) * itemPerPageCount) + i)"
+            >Edit
+            </div>
         </div> 
         
-
+       <!--  <router-outlet></router-outlet> -->
 
         <div class="Pager">
                 <span class="Previous" (click)="preparePager(currentPage-1)"> <b><</b> </span>

@@ -25,9 +25,21 @@
 .Answer {
     color: purple;
     margin-left: 10px;
-    margin-bottom:5px;
+    margin-bottom:10px;
 }
 
+.Edit {
+    width:auto;
+    position: absolute;
+    left: 10px;
+    color: blue;
+    cursor: pointer;
+    bottom:2px;
+    font-size:10px;
+    display:inline-block;
+    margin-left:10px;
+    text-decoration: underline;
+}
 .Type {
     width: auto;
     margin-top:10px;
@@ -40,7 +52,7 @@
     color: white;
     font-size:10px;
     position: absolute;
-
+    cursor: pointer;
     right: 5px;
     bottom:5px;
 }

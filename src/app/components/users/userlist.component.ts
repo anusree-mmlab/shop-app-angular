@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {UsersService} from './user.service';
 
 @Component({
@@ -14,10 +15,16 @@ export class UserListComponent implements OnInit {
   ]; */
 
   userList: any[];
-  constructor(private usersService: UsersService ) { }
+  constructor(
+    private usersService: UsersService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.userList = this.usersService.getUserList();
   }
 
+  loadUser(uid: number) {
+    this.router.navigate(['/users', uid], {queryParams: { edit: 'true'}, fragment:'testfragement'});
+  }
 }

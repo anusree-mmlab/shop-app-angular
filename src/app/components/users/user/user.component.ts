@@ -35,6 +35,13 @@ export class UserComponent implements OnInit {
       console.log(data);
     });
 
+    this.route.queryParams.subscribe((queryParam) => {
+      console.log('queryParam', queryParam);
+    });
+
+    this.route.fragment.subscribe((fragment) => {
+      console.log('fragment', fragment);
+    });
     //console.log(this.formObject);
 
     this.productForm = new FormGroup({

@@ -1,0 +1,32 @@
+<div class="row">
+    <h3>Add Question-Answer</h3>
+
+    <div class="col-12">
+        <form [formGroup]="QAForm" (ngSubmit)="onFormSubmit()">
+
+            <label>*Section:</label>
+            <input type="text" class="form-control" formControlName="section"  (change) ="setSubmitFalse()"/><br/>
+            <div class="error" 
+            *ngIf="!QAForm.get('section').valid &&
+               (QAForm.get('section').touched || isSubmit)&&
+                QAForm.get('section').errors.required
+            ">*Required Field</div>
+            <label>*Question:</label>
+            <input type="text" class="form-control" formControlName="question"  (change) ="setSubmitFalse()"/><br/>
+            <div class="error" 
+            *ngIf="!QAForm.get('question').valid &&
+                (QAForm.get('question').touched  || isSubmit)&&
+                QAForm.get('question').errors.required
+            ">*Required Field</div>
+            <label>*Answer:</label>
+            <textarea cols="10" rows="5" class="form-control" formControlName="answer"  (change) ="setSubmitFalse()"></textarea><br/>
+            <div class="error" 
+            *ngIf="!QAForm.get('answer').valid &&
+                (QAForm.get('answer').touched || isSubmit) &&
+                QAForm.get('answer').errors.required
+            ">*Required Field</div>
+
+            <input type="submit" class="btn btn-primary" value="submit">
+        </form>    
+    </div>
+</div>    
