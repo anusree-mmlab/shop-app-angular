@@ -43,17 +43,17 @@ export class QuestionsService {
         //return fileContentObservable;
 
         
-        return this.http.get('http://localhost:4000/general/fileread');
+        return this.http.get('http://localhost:4000/general/angular/fileread');
     }
 
     appendNewQuestionToFile(qObj: any) {
-       this.http.post('http://localhost:4000/general/fileappend', qObj).subscribe((res) => {
+       this.http.post('http://localhost:4000/general/angular/fileappend', qObj).subscribe((res) => {
             console.log(res);
        });
     }
 
     editQuestionInFile(qObj: any, indx: number) {
-        this.http.post('http://localhost:4000/general/fileupdate', {item: qObj, index: indx}).subscribe((res) => {
+        this.http.post('http://localhost:4000/general/angular/fileupdate', {item: qObj, index: indx}).subscribe((res) => {
              console.log(res);
         });
      }
