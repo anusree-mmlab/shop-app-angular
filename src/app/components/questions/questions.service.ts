@@ -17,6 +17,8 @@ import * as question_answer_json from './question-answer.json';
 export class QuestionsService {
     public selectedQuestion: any;
     public selectedQuestionIndex: number;
+    public totalQuestioncount: number;
+    public selectedSubject: string;
 
     constructor(private http : HttpClient) {
     }
@@ -41,26 +43,88 @@ export class QuestionsService {
         //const fileContentObservable =  this.http.get('https://jsonplaceholder.typicode.com/posts/1');
 
         //return fileContentObservable;
-
         
-        return this.http.get('http://localhost:4000/general/angular/fileread');
+        switch (this.selectedSubject) {
+            case 'angular':
+                return this.http.get('http://localhost:4000/general/angular/fileread');
+            case 'react':
+                return this.http.get('http://localhost:4000/general/react/fileread');
+            case 'node':
+                return this.http.get('http://localhost:4000/general/node/fileread');
+            case 'javascript':
+            return this.http.get('http://localhost:4000/general/purejs/fileread');
+            default:
+                return this.http.get('http://localhost:4000/general/angular/fileread');
+        }
     }
 
     appendNewQuestionToFile(qObj: any) {
-       this.http.post('http://localhost:4000/general/angular/fileappend', qObj).subscribe((res) => {
-            console.log(res);
-       });
+       console.log('appendNewQuestionToFile', this.selectedSubject, qObj);
+       switch (this.selectedSubject) {
+        case 'angular':
+            this.http.post('http://localhost:4000/general/angular/fileappend', qObj).subscribe((res) => {
+                console.log(res);
+           });
+           break;
+        case 'react':
+            this.http.post('http://localhost:4000/general/react/fileappend', qObj).subscribe((res) => {
+                console.log(res);
+           });
+           break;
+        case 'node':
+            this.http.post('http://localhost:4000/general/node/fileappend', qObj).subscribe((res) => {
+                console.log(res);
+           });
+           break;
+        case 'javascript':
+           this.http.post('http://localhost:4000/general/purejs/fileappend', qObj).subscribe((res) => {
+               console.log(res);
+          });
+          break;
+        default:
+            return {message: 'No insert is done as the subject is not selected'};
+        }
     }
 
     editQuestionInFile(qObj: any, indx: number) {
-        this.http.post('http://localhost:4000/general/angular/fileupdate', {item: qObj, index: indx}).subscribe((res) => {
-             console.log(res);
-        });
+
+        switch (this.selectedSubject) {
+            case 'angular':
+                this.http.post('http://localhost:4000/general/angular/fileupdate', {item: qObj, index: indx}).subscribe((res) => {
+                    console.log(res);
+               });
+               break;
+            case 'react':
+               this.http.post('http://localhost:4000/general/react/fileupdate', {item: qObj, index: indx}).subscribe((res) => {
+                    console.log(res);
+               });
+               break;
+            case 'node':
+                this.http.post('http://localhost:4000/general/node/fileupdate', {item: qObj, index: indx}).subscribe((res) => {
+                    console.log(res);
+               });
+               break;
+            case 'javascript':
+                this.http.post('http://localhost:4000/general/purejs/fileupdate', {item: qObj, index: indx}).subscribe((res) => {
+                    console.log(res);
+                });
+                break;
+            default:
+                return {message: 'No update is done as the subject is not selected'};
+        }
      }
 
-     setSelectedQuesion(questionObj, index) {
+     setSelectedQuesion(questionObj, id) {
         this.selectedQuestion = questionObj;
-        this.selectedQuestionIndex = index;
+        this.selectedQuestionIndex = id;
+     }
+
+     setTotalQuesionCount(qcount) {
+        this.totalQuestioncount = qcount;
+     }
+
+     setSelectedSubject(subject:string) {
+         this.selectedSubject = subject;
      }
  
 

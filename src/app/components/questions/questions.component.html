@@ -1,15 +1,46 @@
 <div>
     <header class="header">
         <div style="display:inline-block;">
-            <h2>Questions/Answers</h2>
+            
+            <h3>
+                <span class="sublink" style="color: #ff005c;" 
+                (click)="setSubject('angular')" 
+                [ngStyle]="getBgColor('angular')">Angular</span>
+
+                <span class="sublink" style="color: #000666;"
+                 (click)="setSubject('react')" 
+                 [ngStyle]="getBgColor('react')">React</span>
+
+                <span class="sublink" style="color: #008000;"
+                 (click)="setSubject('node')" 
+                 [ngStyle]="getBgColor('node')">Node</span>
+
+                 <span class="sublink" style="color: #93018d;"
+                 (click)="setSubject('javascript')" 
+                 [ngStyle]="getBgColor('javascript')">Javascript</span>
+                 
+            </h3>
         </div>
+        
         <div style="display:inline-block; float:right;">
             <button class="btn btn-primary" (click) ="addNewQuestion()">New Question</button>
         </div>
-        <div>
-                <button class="btn btn-primary" style="background-color:blueviolet !important; border-radius:20px" (click) ="filterBySection()">Reset Filter</button>
+        <div style="text-align:right">
+               <button class="btn btn-primary" style="background-color:blueviolet !important; border-radius:20px" (click) ="filterBySection()">Reset Filter</button>
         </div>    
     </header>
+
+    <div>
+            <div id="tagbutton">
+                <img src="../../assets/expand.png" width="28"/>
+            </div>
+            <div id="taglist">
+                    <div class="taglistItem" 
+                    *ngFor="let tag of tagsArr" 
+                    (click)="filterBySection(tag.section)">{{tag.section}}</div>
+            </div>
+        </div>    
+
 
     <main class="main">
         <div class="questionContainer" *ngFor="let QA of questionAnswerArrPager; let i = index;">
@@ -21,12 +52,11 @@
             </div> 
             <div class="Type" (click)="filterBySection(QA.section)">{{QA.section}}</div>
             <div class="Edit" 
-                *ngIf="!isFilteredRes"
-                (click)="editQuestion(QA,((currentPage-1) * itemPerPageCount) + i)"
+                (click)="editQuestion(QA)"
             >Edit
             </div>
         </div> 
-        
+        <!-- (click)="editQuestion(QA,((currentPage-1) * itemPerPageCount) + i)" -->
        <!--  <router-outlet></router-outlet> -->
 
         <div class="Pager">

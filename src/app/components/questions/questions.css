@@ -8,6 +8,14 @@
     background-color: #fffb98;
 }
 
+.sublink {
+    cursor: pointer;
+    border: solid 1px;
+    padding:2px;
+    border-radius: 5px;
+   /*  text-decoration: underline; */
+}
+
 .questionContainer {
     margin-bottom: 5px;
     background-color:#d3e5f1;
@@ -92,4 +100,44 @@
 .PageItem:hover{
     background-color: #5c0949;
     color: white;
+}
+
+#tagbutton {
+    width:auto;
+    height: auto;
+    padding: 5px;
+    text-align: right;
+}
+
+#taglist{
+
+display: none;
+   width: 96%;
+   height: auto;
+   padding: 2%;
+   border:solid #cccccc 1px;
+   margin-bottom: 10px;
+}
+
+#tagbutton:hover ~ #taglist{
+        display: block;
+}
+
+#taglist:hover{
+
+    display: block;
+}
+
+.taglistItem {
+    width: auto;
+    margin-top:10px;
+    margin-right:5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ff005c;
+    color: white;
+    font-size:10px;
+    display: inline-block;
+  
+    cursor: pointer;
 }
