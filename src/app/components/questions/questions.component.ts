@@ -117,10 +117,33 @@ export class QuestionsComponent implements OnInit {
         this.router.navigate(['/questions-answers/new-question'],{fragment: 'edit'});
     }
 
-    filterBySection(section: string = null) {
+    filterBySection(section: string= null) {
         if (section) {
             this.isFilteredRes = true;
             const currentResultSet = [...this.questionAnswerArrCopy];
+
+/*             const tagSplitArr= section.split(',');
+            const arr = [];
+            if(tagSplitArr.length>1) {
+                console.log('==========');
+                let i =0;
+                for(let tagval of tagSplitArr){
+                    
+                    i++;
+                    let aa = _.filter(currentResultSet, { section: tagval});
+                    arr.push( aa);
+
+                    console.log('---',tagval,aa);
+
+                    if(tagSplitArr.length === i) {
+                        this.questionAnswerArr = arr;
+                    }
+                }
+                
+                this.questionAnswerArr =  _.filter(currentResultSet, { section: section});
+            } else {
+                this.questionAnswerArr =  _.filter(currentResultSet, { section: section});
+            } */
 
             this.questionAnswerArr =  _.filter(currentResultSet, { section: section});
             const pCount = Math.ceil(this.questionAnswerArr.length / this.itemPerPageCount);

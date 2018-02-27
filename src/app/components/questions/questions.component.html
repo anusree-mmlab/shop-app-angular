@@ -30,16 +30,16 @@
         </div>    
     </header>
 
-    <div>
-            <div id="tagbutton">
-                <img src="../../assets/expand.png" width="28"/>
-            </div>
-            <div id="taglist">
-                    <div class="taglistItem" 
-                    *ngFor="let tag of tagsArr" 
-                    (click)="filterBySection(tag.section)">{{tag.section}}</div>
-            </div>
-        </div>    
+    <div style="text-align:right">
+        <div id="tagbutton" >
+            <img src="../../assets/expand.png" width="28" id="imgbut"/>
+        </div>
+        <div id="taglist"  style="text-align:left">
+                <div class="taglistItem" 
+                *ngFor="let tag of tagsArr" 
+                (click)="filterBySection(tag.section)">{{tag.section}}</div>
+        </div>
+    </div>    
 
 
     <main class="main">
@@ -50,7 +50,18 @@
             <div class="Answer" *ngFor="let s of QA.answer">
                 {{s}} <br/>
             </div> 
-            <div class="Type" (click)="filterBySection(QA.section)">{{QA.section}}</div>
+<!--             <div class="Type" (click)="filterBySection(QA.section)">
+                {{QA.section}}
+            </div> -->
+
+            <div style="text-align:right">
+                    <div class="Type" 
+                    (click)="filterBySection(QA.section)"
+                    *ngFor="let tagitem of QA.section.split(',')"
+                    >{{tagitem}}</div> 
+            </div>
+
+
             <div class="Edit" 
                 (click)="editQuestion(QA)"
             >Edit

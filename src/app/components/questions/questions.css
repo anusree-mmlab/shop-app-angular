@@ -59,10 +59,11 @@
     background-color: #ff005c;
     color: white;
     font-size:10px;
-    position: absolute;
     cursor: pointer;
+    margin-right: 2px;
+/*     position: absolute;
     right: 5px;
-    bottom:5px;
+    bottom:5px; */
 }
 
 .Pager {
@@ -106,7 +107,8 @@
     width:auto;
     height: auto;
     padding: 5px;
-    text-align: right;
+    display: inline-block;
+    
 }
 
 #taglist{
