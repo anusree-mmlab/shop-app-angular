@@ -32,14 +32,12 @@ export class NewQuestionComponent implements OnInit {
         console.log('---', this.questionsService.selectedQuestion, this.questionsService.selectedQuestionIndex);
 
         this.route.fragment.subscribe((fragmnt) => {
-            if(fragmnt === 'create') {//this.questionsService.selectedQuestion.answer
-            
-            } else if(fragmnt === 'edit') {
+            if (fragmnt === 'edit') {
                 this.isEdit = true;
                 this.QAForm = new FormGroup({
                     'section': new FormControl(this.questionsService.selectedQuestion.section, [Validators.required]),
                     'question': new FormControl(this.questionsService.selectedQuestion.question, [Validators.required]),
-                    'answer': new FormControl(`${this.questionsService.selectedQuestion.answer}`.replace(',','\n'), [Validators.required])
+                    'answer': new FormControl(this.questionsService.selectedQuestion.answer.join('\n'), [Validators.required])
                 });
             }
         });
